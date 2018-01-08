@@ -1,0 +1,19 @@
+HighScores
+
+1. Jenniffer 100
+2. Sally 95
+3. Micheal 89
+4. Alyson 70
+5. Patrick 65
+6. George 22
+7. Hannah 8
+8. HMH 6
+9. James 4
+10. James 3
+11. James 3
+12. Alex 2
+13. Johnny 1
+14. Mary 1
+15. James 1
+16. MaryJane 1
+17. James 0

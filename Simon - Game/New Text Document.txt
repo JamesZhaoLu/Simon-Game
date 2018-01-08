@@ -1,0 +1,10 @@
+HighScores: 
+
+1. Alyson 100
+2. John 90
+3. Taylor 89
+4. Barry 70
+5. Micheal 65
+6. Perry 60
+7. Stephen 55
+8. George 50

@@ -1,0 +1,10 @@
+HighScores:
+
+1. Alyson 100
+2. Rebecca 98
+3. Johnaton = 90
+4. Harry = 81
+5. Micheal = 70
+6. Patrick = 65
+7. Quinten = 50
+8. Michelle = 45

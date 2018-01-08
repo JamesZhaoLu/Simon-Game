@@ -1,0 +1,144 @@
+/**
+ * @(#)Text1.java
+ *
+ *
+ * @author 
+ * @version 1.00 2016/12/13
+ */
+
+
+import javax.swing.*;
+
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.io.*;
+
+
+public class GUI implements ActionListener{
+	JFrame Simon;
+	
+	ArrayList<JButton> btnSequence = new ArrayList<JButton>();
+	//This is the ArrayList that will hold the buttons
+	
+	JPanel buttons;
+	//Holds the Buttons for the Game
+
+		
+	JLabel level;
+	JLabel cOrW;
+	//Labels to contain text
+	
+	Timer time;
+	int ticks;
+	int counter;
+	//These are variables that will be associated with the Timer
+	//Ticks measure how many ticks there were and then notes if it should be turned on or off
+	int numSquares;
+	//this variable is used to denote the number of squares in the Game - based on difficulty level
+	Game SimonGame;
+	//Game associated with GUI
+	
+	ArrayList<Integer> numbers = new ArrayList<Integer>();
+	//temp just for testing
+	//SIde note any arraylists for counting need to start from 0 - size of array minus 1
+	int tempCounter;
+    int countWin;
+    //These are temp variables
+    boolean isSeqGoing;
+    //Boolean to ensure that players do not play when timer is going
+
+  
+
+    public GUI(int eMH) { //eMH is a int that holds difficulty level of game
+    
+    	
+    	Simon = new JFrame("Simon");
+    	Simon.setSize(1000,1000);
+    	
+    	//sets size of JFrame
+    	
+    	buttons = new JPanel(new GridLayout(2,3));
+    	buttons.setPreferredSize(new Dimension(600,400));
+    	
+    	//Set size and creates JPanel for buttons
+    	
+    	cOrW = new JLabel();
+    	//Tells player if they are correct or incorrect in pressing their button
+    	
+    	
+    	ArrayList<Integer> game = new ArrayList<Integer>();
+    	game = Game.fillInitial(numSquares);
+    	
+    	if (eMH == 1){
+    		SimonGame = new gameEasy(8);
+    		createButtons(8);
+    		//creates game with 8 buttons
+    	}
+    	else if (eMH == 2){
+    		SimonGame = new gameMed(12);
+    		createButtons(12);
+    		//creates game with 12 buttons
+    	}
+    	else if (eMH == 3){
+    		SimonGame = new gameHard(16);
+    		createButtons(16);
+    		//creates game with 16 buttons
+    	}
+    	System.out.println (SimonGame.p1);
+    	//Generates the Game that goes with the GUI
+    	//uses the level of difficulty that corresponds with user input
+    	
+		
+		time = new Timer(1000, this);
+		//Creates timer with wanted interval
+		
+		counter = 0;
+    	//Timer counter 
+    	
+    	countWin=0;
+    	tempCounter = 0;
+    	//sets counters to 0
+    	
+    	
+    	
+    }
+    public static void main (String[] args) {
+    	//GUIInitial initialScreen = new GUIInitial();
+    	//initialScreen.initial.show();
+    	int eMH;
+    	
+    	try{
+    		JOptionPane.showMessageDialog(null,"Welcome to Simon! In a moment press the button to continue to the Game. You will first be asked to enter a difficulty level. Then, please enter a name for your player. On the screen you will see a group of buttons. These buttons will flash in an order. Your goal is to REMEMBER this order! Once the sequence is over, press the buttons in the order that they were shown!If you are correct you will go to the next round. If you are wrond the game is over! GOOD LUCK!");
+    		//instruction dialog
+    		eMH = Integer.parseInt(JOptionPane.showInputDialog("Please enter a difficulty level: 1 = easy, 2 = medium 3 = hard"));
+    		//saves difficulty level
+    	
+    		while (eMH > 3 || eMH < 1){
+    		eMH = Integer.parseInt(JOptionPane.showInputDialog("Please enter a valid difficulty level! 1 = easy, 2 = medium 3 = hard"));
+    		//catches it difficultyl level is incorrect
+    	}
+    	
+    	
+    	}
+    	catch (Exception e){
+    		
+    	}
+    	
+    	
+    	GUI game = new GUI(eMH);
+    	game.Simon.setLayout(new FlowLayout());
+    	
+    	game.Simon.add(game.buttons);
+    	//add Panel to JFrame
+    	
+    	
+    	game.Simon.add(game.cOrW);
+    	//add the labels to the JFrame
+    	
+    	game.Simon.setVisible(true);
+    	//Shows the JFrame
